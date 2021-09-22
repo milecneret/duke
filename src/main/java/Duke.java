@@ -4,6 +4,22 @@ import java.util.*;
 
 
 public class Duke {
+    public static List<String> list = new ArrayList<String>(); //add string array to store values
+    public static String line; //to take in the string
+    public static int index=1; //for printing string array later
+
+    private static void printList(){
+        for(String item : list) {
+            System.out.println((index++)+". "+item); //print string array
+        }
+    }
+
+    private static void addTask(String s){
+        list.add(s);
+        System.out.println("added: " + s);
+
+    }
+
     public static void main(String[] args) {
 //        String logo = " ____        _        \n"
 //                + "|  _ \\ _   _| | _____ \n"
@@ -13,24 +29,20 @@ public class Duke {
 //        System.out.println("Hello from\n" + logo);
 
 //        Level 1. Greet, Echo, Exit
-        String line; //to take in the string
         Scanner in = new Scanner(System.in);
         System.out.println("Hello! I'm Duke Morpheus\n");
         System.out.println("What can I do for you?");
-        List<String> list = new ArrayList<String>(); //add string array to store values
-        int index=1; //for printing string array later
+
         line = in.nextLine();
 
         while(!line.equals("bye")){
-
             if (line.equals("list")){
-                for(String item : list) {
-                    System.out.println((index++)+". "+item); //print string array
-                }
+                printList();
+                line = in.nextLine();
             }
-            list.add(line);
-            System.out.println("added: " + line);
+            addTask(line);
             line = in.nextLine();
+
         }
 
         System.out.println("Bye. Hope to see you again soon!\n");
