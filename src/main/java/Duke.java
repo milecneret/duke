@@ -1,23 +1,27 @@
-import java.util.Arrays;
 import java.util.Scanner;
 import java.util.*;
 
-
 public class Duke {
-    public static List<String> list = new ArrayList<String>(); //add string array to store values
     public static String line; //to take in the string
-    public static int index=1; //for printing string array later
 
-    private static void printList(){
-        for(String item : list) {
-            System.out.println((index++)+". "+item); //print string array
-        }
+    Task[] tasks = new Task[100];
+    int count = 0;
+
+    private void addTask(String t) {
+        Task newTask = new Task(t, count);
+        tasks[count] = newTask;
+        count++;
+
+        System.out.println("added: " + t);
     }
 
-    private static void addTask(String s){
-        list.add(s);
-        System.out.println("added: " + s);
+    private String printTaskList() {
+        String tasksList = "Here are the tasks in your list: \n";
+        for (int i = 0; i < count; i++) {
+            tasksList += this.tasks[i].toString() + "\n";
+        }
 
+        return (tasksList);
     }
 
     public static void main(String[] args) {
@@ -28,24 +32,27 @@ public class Duke {
 //                + "|____/ \\__,_|_|\\_\\___|\n";
 //        System.out.println("Hello from\n" + logo);
 
-//        Level 1. Greet, Echo, Exit
-        Scanner in = new Scanner(System.in);
+        Duke DukeMorpheus = new Duke();
         System.out.println("Hello! I'm Duke Morpheus\n");
         System.out.println("What can I do for you?");
 
-        line = in.nextLine();
+        Scanner in = new Scanner(System.in);
+        String input = in.nextLine();
 
-        while(!line.equals("bye")){
-            if (line.equals("list")){
-                printList();
-                line = in.nextLine();
+        while (!input.equals("bye")) {
+            if (input.equals("list")) {
+                System.out.println(DukeMorpheus.printTaskList());
             }
-            addTask(line);
-            line = in.nextLine();
+            else if (input.split(" ")[0].equals("done")) {
+                int index = Integer.parseInt(input.split(" ")[1]);
+                DukeMorpheus.tasks[index - 1].markDone();
+            }
+            else {
+                DukeMorpheus.addTask(input);
+            }
 
+            input = in.nextLine();
         }
-
         System.out.println("Bye. Hope to see you again soon!\n");
-
     }
 }
