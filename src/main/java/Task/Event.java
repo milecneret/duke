@@ -19,8 +19,7 @@ public class Event extends Todo {
     }
 
     @Override
-    public String toString() {
-        return "[E]" + super.toString() + " (at: " + at + ")";
+    public String fullDescription(){
+        return "[E]" + this.toString() + this.description;
     }
-
 }

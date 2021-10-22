@@ -13,6 +13,9 @@ public class Task {
 
     @Override
     public String toString() {
-        return "description: " + description;
+        return description;
     }
+//    public String toString() {
+//        return "description: " + description;
+//    }
 }
