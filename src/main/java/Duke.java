@@ -9,13 +9,13 @@ import Task.*;
 public class Duke {
     public static List<Task> taskList = new ArrayList<Task>(); //array to store Task objects
     public static String line; //to take in the string
-    public static int index=1; //for printing string array later
     public static String inputType; //
 
     private static void printList(){
+        int index=1; //for printing string array later
         System.out.println("Here are the tasks in your list:");
         for(Task item : taskList) {
-            System.out.println((index++)+". "+item); //print string array
+            System.out.println((index++)+". "+item.getDescription()); //print string array
         }
     }
 
@@ -27,26 +27,13 @@ public class Duke {
         line = in.nextLine();
 
         while(!line.equals("bye")){
-            if (line.equals("list")){
-                printList();
-                line = in.nextLine();
+            if(line.equals("list")) printList();
+            else{
+                taskList.add(new Todo(line));
+                System.out.println("Now you have " +taskList.size()+ " tasks in the list.");
             }
-            Todo todo = new Todo(line);
-            taskList.add(todo);
             line = in.nextLine();
-
         }
-
-//        while(!line.equals("bye")){
-//            if (line.equals("list")){
-//                printList();
-//                line = in.nextLine();
-//            }
-//            addTask(line);
-//            line = in.nextLine();
-//
-//        }
-
 
         //test out date time class
         //write the logic for main object
@@ -55,10 +42,6 @@ public class Duke {
         //implement switch case
 
         //Deadline d = new Deadline("Read textbook", "Nov 16");
-
-
-
-
 
         //scanner have to split the characters with the 'by' keyword to differentiate todo vs deadline
         //implement case?

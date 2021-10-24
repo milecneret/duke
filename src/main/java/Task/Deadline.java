@@ -19,7 +19,7 @@ public class Deadline extends Todo {
     }
 
     @Override
-    public String fullDescription(){
+    public String getDescription(){
         return "[D]" + this.toString() + this.description;
     }
 }

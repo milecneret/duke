@@ -6,7 +6,6 @@ public class Todo extends Task {
     public Todo(String description) {
         super(description);
         isDone = false;
-        System.out.println("added: " + description) ;
     }
 
     public void setDone(boolean done) {
@@ -17,23 +16,16 @@ public class Todo extends Task {
         return isDone;
     }
 
-    public String fullDescription(){
-        return "[T]" + this.toString() + this.description;
-    }
-
     @Override
-    public String toString() {
+    public String getDescription(){
         String status = null;
         if (isDone){
             status = "[x] ";
         } else {
             status = "[ ] ";
         }
-        return "[T]" + this.toString() + this.description;
-        //return status + super.toString() ;
-        //return "[T]" + super.toString() + " (by: " + by + ")";
+        return "[T]" + status + this.description;
     }
-
 
 }
 
