@@ -24,27 +24,46 @@ public class Duke {
         System.out.println("Hello! I'm Duke Morpheus\n");
         System.out.println("What can I do for you?");
 
-        line = in.nextLine();
+        String [] instruction;
 
-        while(!line.equals("bye")){
-            if(line.equals("list")) printList();
-            else{
-                taskList.add(new Todo(line));
-                System.out.println("Now you have " +taskList.size()+ " tasks in the list.");
-            }
+        do{
             line = in.nextLine();
+            instruction = line.split(" ",2);
+            switch (instruction[0]) {
+                case "todo":
+                    taskList.add(new Todo(instruction[1]));
+                    System.out.println("Now you have " + taskList.size() + " tasks in the list.");
+                    break;
+                case "deadline":
+                    taskList.add(new Deadline(instruction[1]));
+                    System.out.println("Now you have " + taskList.size() + " tasks in the list.");
+                    break;
+                case "event":
+                    taskList.add(new Event(instruction[1]));
+                    System.out.println("Now you have " + taskList.size() + " tasks in the list.");
+                    break;
+                case "list":
+                    printList();
+                    break;
+                case "done":
+                    taskList.get(Integer.parseInt(instruction[1])-1).markDone();
+                    break;
+                case "bye":
+                    break;
+                default: //by default everything is todo if no specific instructions
+                    taskList.add(new Todo(line));
+                    System.out.println("Now you have " + taskList.size() + " tasks in the list.");
+                    break;
+            }
         }
+        while(!instruction[0].equals("bye"));
 
         //test out date time class
-        //write the logic for main object
-        //everytime when add new item, show this "Now you have 5 tasks in the list."
         //for the string, splitstring method to split, 'by', 'at'
-        //implement switch case
 
         //Deadline d = new Deadline("Read textbook", "Nov 16");
 
         //scanner have to split the characters with the 'by' keyword to differentiate todo vs deadline
-        //implement case?
 
         System.out.println("Bye. Hope to see you again soon!\n");
 

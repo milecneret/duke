@@ -9,6 +9,10 @@ public class Event extends Todo {
         this.at = at;
     }
 
+    public Event(String description) {
+        super(description);
+    }
+
     //to modify to datetime class later
     public void setBy(String at) {
         this.at = at;
@@ -20,6 +24,6 @@ public class Event extends Todo {
 
     @Override
     public String getDescription(){
-        return "[E]" + this.toString() + this.description;
+        return "[E]" + status + this.description;
     }
 }
