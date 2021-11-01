@@ -1,7 +1,7 @@
 package Task;
 
 public class Event extends Todo {
-
+    String symbol = "[E]";
     protected String at;
 
     public Event(String description, String at) {
@@ -24,6 +24,7 @@ public class Event extends Todo {
 
     @Override
     public String getDescription(){
-        return "[E]" + status + this.description;
+        return "[E]" + status + this.description + " (at: " + at +")" ;
     }
+
 }

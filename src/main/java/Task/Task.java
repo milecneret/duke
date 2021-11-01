@@ -6,7 +6,6 @@ public class Task {
 
     public Task(String description) {
         this.description = description;
-        System.out.println("Got it. I've added this task:\r\n" + description) ;
     }
 
     public String getDescription() {
@@ -15,7 +14,6 @@ public class Task {
 
     public void markDone() {
         status = "[X] ";
-        System.out.println("Nice! I've marked this task as done: \r\n" + status + description) ;
     }
 
     public boolean isDone() {

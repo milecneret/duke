@@ -1,10 +1,9 @@
 package Task;
 
 public class Deadline extends Todo {
-
     protected String by;
 
-    public Deadline(String description) {
+    public Deadline(String description, String by) {
         super(description);
         this.by = by;
     }
@@ -20,6 +19,6 @@ public class Deadline extends Todo {
 
     @Override
     public String getDescription(){
-        return "[D]" + status + this.description;
+        return "[D]" + status + this.description  + " (by: " + by +")" ;
     }
 }
