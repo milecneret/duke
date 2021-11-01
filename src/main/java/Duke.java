@@ -20,6 +20,15 @@ public class Duke {
         }
     }
 
+    private static void find(String keyword) {
+        System.out.println("Here are the matching tasks in your list:");
+        for (Task item : taskList) {
+            if(item.getDescription().contains(keyword)){
+                System.out.println(item.getDescription());
+            }
+        }
+    }
+
     private static void AddingNewItemToList() {
         System.out.println("Got it. I've added this task:\n" + taskList.get(taskList.size() - 1).getDescription()) ;
     }
@@ -68,6 +77,9 @@ public class Duke {
                     System.out.println("Noted. I've removed this task:");
                     System.out.println(taskList.get(Integer.parseInt(instruction[1]) - 1).getDescription());
                     taskList.remove(Integer.parseInt(instruction[1]) - 1);
+                    break;
+                case "find":
+                    find(instruction[1]);
                     break;
                 case "bye":
                     break;
